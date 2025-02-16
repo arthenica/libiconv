@@ -1,3 +1,37 @@
+2026-03-06  KO Myung-Hun  <komh78@gmail.com>
+
+	Add OS/2-dependent aliases.
+	Support aliases available on OS/2, especially results of
+	kLIBC nl_langinfo(CODESET).
+	* Makefile.devel (all): Depend on lib/aliases_sysos2.h.
+	(lib/aliases_sysos2.h lib/canonical_sysos2.h
+	lib/canonical_local_sysos2.h): New rules.
+	(lib/aliases_os2.h lib/canonical_os2.h): New rules.
+	(lib/aliases_os2_sysos2.h lib/canonical_os2_sysos2.h): New rules.
+	(totally-clean): Remove lib/aliases_sysos2.gperf, lib/aliases_os2.h,
+	lib/aliases_os2_sysos2.h, lib/canonical_sysos2.h, lib/canonical_os2.h,
+	lib/canonical_os2_sysos2.h, lib/canonical_local_sysos2.h.
+	* lib/Makefile.in (iconv.lo): Depend on $(srcdir)/aliases_sysos2.h,
+	$(srcdir)/aliases_os2.h, $(srcdir)/aliases_os2_sysos2.h.
+	(GENERATED_FILES): Add aliases_sysos2.gperf, aliases_sysos2.h,
+	aliases_os2.h, aliases_os2_sysos2.h, canonical_sysos2.h,
+	canonical_os2.h, canonical_os2_sysos2.h, canonical_local_sysos2.h.
+	* lib/aliases2.h: Include headers for OS/2 aliases.
+	* lib/encodings.def: Add DEFALIAS statements, conditional on
+	USE_OS2_ALIASES.
+	* lib/encodings_aix.def: Add DEFALIAS statements, conditional on
+	USE_OS2_ALIASES.
+	* lib/encodings_dos.def: Add DEFALIAS statements, conditional on
+	USE_OS2_ALIASES.
+	* lib/genaliases2.c (main): Include encodings_aix.def and
+	encodings_dos.def for OS/2.
+	* lib/genflags.c: Define USE_OS2.
+	* lib/iconv.c: Define USE_OS2 if ENABLE_EXTRA, otherwise define USE_OS2,
+	USE_AIX, USE_DOS on OS/2.
+	(all_encodings): Include OS/2-dependent headers on OS/2 aliases.
+	(aliases2_lookup): Define OS/2-dependent alias lookup table.
+	(all_canonical): Include OS/2-dependent headers on OS/2 aliases.
+
 2025-12-26  Collin Funk  <collin.funk1@gmail.com>  (tiny change)
 
 	Update after relocatable-lib change in gnulib on 2025-12-09.

@@ -868,6 +868,7 @@ int main (int argc, char* argv[])
 #endif
 #if ENABLE_NLS
   bindtextdomain("libiconv",relocate(LOCALEDIR));
+  bindtextdomain("gnulib",relocate(GNULIB_LOCALEDIR));
 #endif
   textdomain("libiconv");
   /* No need to invoke the gnulib function stdopen() here, because

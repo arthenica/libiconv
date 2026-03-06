@@ -1,5 +1,11 @@
 2026-03-06  Bruno Haible  <bruno@clisp.org>
 
+	Use new approach for gnulib localizations.
+	* src/iconv.c (main): Invoke bindtextdomain for the domain 'gnulib'.
+	* DEPENDENCIES: Mention the gnulib localizations.
+
+2026-03-06  Bruno Haible  <bruno@clisp.org>
+
 	Use the newest gettext release.
 	* srcm4/po.m4: New file, from gettext-1.0.
 	* Makefile.devel (srclib/Makefile.gnulib): Don't override it with the

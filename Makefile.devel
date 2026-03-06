@@ -98,6 +98,7 @@ srclib/Makefile.gnulib :
 	  $$GNULIB_TOOL --copy-file m4/codeset.m4 srcm4/codeset.m4 || exit $$?; \
 	  $$GNULIB_TOOL --lib=libicrt --source-base=srclib --m4-base=srcm4 --makefile-name=Makefile.gnulib --no-libtool --local-dir=gnulib-local --no-vc-files \
 	    --import $(GNULIB_MODULES); \
+	  git diff srcm4/po.m4 | patch -p1 -R; \
 	fi
 
 gnulib-imported-files : force

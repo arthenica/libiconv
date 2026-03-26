@@ -1,4 +1,4 @@
-/* Copyright (C) 1999-2001, 2003, 2005, 2008, 2012, 2017, 2023 Free Software Foundation, Inc.
+/* Copyright (C) 1999-2026 Free Software Foundation, Inc.
    This file is part of the GNU LIBICONV Library.
 
    The GNU LIBICONV Library is free software; you can redistribute it
@@ -60,7 +60,11 @@ static void emit_encoding (FILE* out1, FILE* out2, const char* const* names, siz
       putc(c, out2);
     }
   }
-  fprintf(out2,"\")' tmp.h | sed -e 's|^.*\\(stringpool_str[0-9]*\\).*$|  (int)(long)\\&((struct stringpool_t *)0)->\\1,|'\n");
+  /* Use a cast to 'size_t', as an approximation to 'uintptr_t'.  On most
+     platforms, the types 'long' and 'unsigned long' do work as well, but on
+     64-bit native Windows platforms, they don't have the same size as pointers
+     and therefore generate warnings.  */
+  fprintf(out2,"\")' tmp.h | sed -e 's|^.*\\(stringpool_str[0-9]*\\).*$|  (int)(size_t)\\&((struct stringpool_t *)0)->\\1,|'\n");
   for (; n > 0; names++, n--)
     emit_alias(out1, *names, c_name);
 }

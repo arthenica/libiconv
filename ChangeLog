@@ -1,5 +1,14 @@
 2026-03-26  Bruno Haible  <bruno@clisp.org>
 
+	Avoid compiler warnings on 64-bit native Windows.
+	Reported by Wilfredo Velázquez-Rodríguez at
+	<https://savannah.gnu.org/bugs/?68178>.
+	* lib/genaliases.c (emit_encoding): Emit a cast to size_t, not 'long'.
+	* lib/genaliases2.c (emit_encoding): Likewise.
+	* lib/iconv.c (sysdep_aliases): Cast to size_t, not 'long'.
+
+2026-03-26  Bruno Haible  <bruno@clisp.org>
+
 	Switch to autoconf 2.73.
 	* autogen.sh: Update comment.
 

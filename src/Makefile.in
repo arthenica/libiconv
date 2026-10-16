@@ -86,7 +86,14 @@ iconv.@OBJEXT@ : $(srcdir)/iconv.c
 	$(CC) -c $(INCLUDES) -I../lib $(CFLAGS) $(CPPFLAGS) -DINSTALLDIR=$(bindir_c_make) -DLOCALEDIR=$(localedir_c_make) $(srcdir)/iconv.c
 
 iconv.res : $(srcdir)/../windows/iconv.rc
-	$(WINDRES) `$(SHELL) $(srcdir)/../windows/windres-options --escape $(PACKAGE_VERSION)` -i $(srcdir)/../windows/iconv.rc -o iconv.res --output-format=coff
+	if test '@OBJEXT@' = obj; then \
+	  rcfile=`cygpath -w '$(srcdir)/../windows/iconv.rc'`; \
+	  rc -foiconv.tmp.res `$(SHELL) $(srcdir)/../windows/windres-options $(PACKAGE_VERSION)` "$$rcfile" \
+	  && cvtres -out:iconv.res iconv.tmp.res \
+	  && $(RM) iconv.tmp.res; \
+	else \
+	  $(WINDRES) `$(SHELL) $(srcdir)/../windows/windres-options --escape $(PACKAGE_VERSION)` -i $(srcdir)/../windows/iconv.rc -o iconv.res --output-format=coff; \
+	fi
 
 # The following rule is necessary to avoid a toplevel "make -n check" failure.
 ../lib/libiconv.la :

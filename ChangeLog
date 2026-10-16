@@ -1,5 +1,13 @@
 2026-10-16  Bruno Haible  <bruno@clisp.org>
 
+	In MSVC builds, use 'rc' instead of 'windres'.
+	* INSTALL.windows (MSVC): Remove requirement to install mingw tools.
+	Instead, show how to set the PATH.
+	* lib/Makefile.in (libiconv.res.lo): On MSVC, use 'rc' and 'cvtres'.
+	* src/Makefile.in (iconv.res): Likewise.
+
+2026-10-16  Bruno Haible  <bruno@clisp.org>
+
 	Improve copyright statement in the Windows .rc files.
 	* windows/libiconv.rc (LegalCopyright): Add the copyright holder.
 	* windows/iconv.rc (LegalCopyright): Likewise.

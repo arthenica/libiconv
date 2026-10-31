@@ -81,7 +81,7 @@ maintainer-clean : force
 # List of source files.
 SOURCE_FILES = \
   README DEPENDENCIES INSTALL.windows HACKING INTEGRATE AUTHORS NEWS \
-  ChangeLog Makefile.devel configure.ac Makefile.in \
+  ChangeLog autogen.sh Makefile.devel configure.ac Makefile.in \
   include/export.h include/libcharset.h.in include/localcharset.h.in \
   tools/README \
   tools/all-charsets tools/all-charsets-X11 tools/all-locales \

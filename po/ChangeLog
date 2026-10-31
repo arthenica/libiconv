@@ -1,3 +1,10 @@
+2026-10-31  Bruno Haible  <bruno@clisp.org>
+
+	Update translations.
+	Ran  (cd po; ./fetch-po; make update-po)
+	* lv.po: New file.
+	* LINGUAS: Automatically updated.
+
 2026-03-06  Bruno Haible  <bruno@clisp.org>
 
 	Update translations.
